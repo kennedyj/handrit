@@ -1,0 +1,21 @@
+html
+body
+  p
+    a(href='/', title='Home') Home
+    &nbsp
+    a(href='/notes', title='Notes') Notes
+
+  - if (typeof(items) != 'undefined')
+    h3 Notes
+    ul
+      for note in items
+        li
+          a(href='/notes/' + note.name, title=note.title)= note.title
+  - else
+    p Hi!
+
+  - if (typeof(item) != 'undefined')
+    h3 #{item.title}
+    p #{item.author.name}
+    != transform(item || { content: "I got nothin" })
+    

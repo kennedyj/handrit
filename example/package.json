@@ -1,0 +1,12 @@
+{
+  "name": "handrit-example",
+  "description": "a simple example using express",
+  "version": "0.0.1",
+  "author": "jkennedy <jkennedy@vsso.com>",
+  "dependencies": {
+    "express": ">= 1.2.0",
+    "jade": ">= 0.20.0",
+    "node-markdown": ">= 0.1.0"
+  },
+  "engine": "node >= 0.6.2"
+}
