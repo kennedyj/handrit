@@ -17,6 +17,7 @@
     "node-markdown": ">= 0.1.0",
     "markdown": ">= 0.3.1",
     "datetime": ">= 0.0.3",
-    "step": ">= 0.0.0"
+    "step": ">= 0.0.0",
+    "promised-io": ">= 0.0.0"
   }
 }

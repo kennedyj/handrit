@@ -2,7 +2,7 @@
 Handrit is a basic wiki style node.js framework leveraging jade and markdown.
 
 ### Usage
-Currently it relies on Express, hopefully I can change that. Below is a complete example. Only render or list and get are required though. Currently only render is supported
+Currently it relies on Express, hopefully I can change that. Below is a complete example. Only render, or list and get are required though. Currently only render is supported
 
     var handrit = require('handrit');
 
@@ -31,7 +31,25 @@ Currently it relies on Express, hopefully I can change that. Below is a complete
 
 Still need to add the engine support.
 
+    handrit.engine(app {
+      name: "jade",
+      ext: "jade",
+      handler: function(content){
+        return "<h1>Output</h1>";
+      }
+    })
+
+    handrit.engine(app {
+      name: "markdown",
+      ext: "md",
+      handler: function(content){
+        return "<h1>Output</h1>";
+      }
+    })
+
 ### Dev Notes
+Add extrapolation for the URI and the src folder  
+Allow authors to be configurable  
 
 #### What it's replacing
 
