@@ -1,7 +1,7 @@
 {
   "name": "handrit",
-  "description": "multi engine powered blog",
-  "tags": ["jade","node","markdown","blog"],
+  "description": "multi engine powered micro cms",
+  "tags": ["jade","markdown","cms"],
   "version": "0.1.0",
   "author": "Josh Kennedy <josh@vsso.com>",
   "repository": {
@@ -15,9 +15,7 @@
     "express": ">= 1.2.0",
     "jade": ">= 0.20.0",
     "node-markdown": ">= 0.1.0",
-    "markdown": ">= 0.3.1",
     "datetime": ">= 0.0.3",
-    "step": ">= 0.0.0",
-    "promised-io": ">= 0.0.0"
+    "step": ">= 0.0.0"
   }
 }

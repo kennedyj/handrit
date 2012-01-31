@@ -2,7 +2,7 @@
 Handrit is a basic wiki style node.js framework leveraging jade and markdown.
 
 ### Usage
-Currently it relies on Express, hopefully I can change that. Below is a complete example. Only render, or list and get are required though. Currently only render is supported
+Currently it relies on Express and connect. Below is a complete example. Only render, or list and item are required though.
 
     var handrit = require('handrit');
 
@@ -23,7 +23,7 @@ Currently it relies on Express, hopefully I can change that. Below is a complete
         res.local("items", items || []);
         res.render('notes/index', { title: "Notes list"});
       },
-      get: function(err, item, req, res, next){
+      item: function(err, item, req, res, next){
         res.local("item", items);
         res.render('notes/single', { title: res.local("item").title });
       }
@@ -52,6 +52,7 @@ Add extrapolation for the URI and the src folder
 Allow authors to be configurable  
 
 #### What it's replacing
+In addition to all of the data code, and serving static files under each item it replaces the specific routes.
 
     app.get('/notes', data.listNotes, function(req, res){
       res.render('notes/index', { title: "Notes list"});
@@ -61,8 +62,6 @@ Allow authors to be configurable
       res.render('notes/single', { title: res.local("note").title });
     });
     
-    app.use(expressUglify.middleware({ src: __dirname + '/public' }));
-    
 #### How do I want it to behave
 For adding transform engines
 
@@ -70,22 +69,5 @@ For adding transform engines
       extention: "",
       callback: function(){}
     })
-
-
-#### If Express and Connect
-You add
-
-    route.get('folder', handrit.type('folder'))
-
--- Not used currently --  
-This relies on Express/Connect
-
-    app.use(handrit.type({
-      src: "",
-      render: function(){},
-      renderList: function(){},
-      renderItem: function(){}
-    }))
-    
 
 
