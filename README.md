@@ -8,7 +8,7 @@ Currently it relies on Express and connect. Below is a complete example. Only re
 
     handrit.type(app, {
       src: "notes",
-      render: function(err, items, item, req, res, next){
+      render: function(err, data){
         if (err) { next(err) }
 
         res.local("items", items || []);
@@ -19,13 +19,31 @@ Currently it relies on Express and connect. Below is a complete example. Only re
           res.render('notes/single', { title: res.local("item").title });
         }
       },
-      list: function(err, items, req, res, next){
-        res.local("items", items || []);
+      list: function(err, data){
+        res.local("items", data.list || []);
         res.render('notes/index', { title: "Notes list"});
       },
-      item: function(err, item, req, res, next){
-        res.local("item", items);
+      item: function(err, data){
+        res.local("item", data.item);
         res.render('notes/single', { title: res.local("item").title });
+      }
+    })
+
+Example of a multi column layout. Columns are case-insensitive
+
+    handrit.type(app, {
+      src: "notes",
+      columns: ["right"],
+      render: function(err, data){
+        if (err) { next(err) }
+
+        res.local("items", data.list || []);
+        if (data.item === undefined) {
+          res.render('notes/index', { title: "Notes list"});
+        } else {
+          res.local("item", data.item);
+          res.render('notes/single', { title: res.local("item").title });
+        }
       }
     })
 
@@ -61,13 +79,3 @@ In addition to all of the data code, and serving static files under each item it
     app.get('/notes/:id', data.listNotes, data.getNote, function(req, res, next){
       res.render('notes/single', { title: res.local("note").title });
     });
-    
-#### How do I want it to behave
-For adding transform engines
-
-    handrit.addEngine({
-      extention: "",
-      callback: function(){}
-    })
-
-
