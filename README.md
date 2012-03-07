@@ -6,6 +6,8 @@ Currently it relies on Express and connect. Below is a complete example. Only re
 
     var handrit = require('handrit');
 
+    handrit.helpers(app)
+
     handrit.type(app, {
       src: "notes",
       render: function(err, data){
@@ -47,9 +49,10 @@ Example of a multi column layout. Columns are case-insensitive
       }
     })
 
-Still need to add the engine support.
+Article/Transformation engines
 
-    handrit.engine(app {
+    // Default engines
+    handrit.engine({
       name: "jade",
       ext: "jade",
       handler: function(content){
@@ -57,7 +60,7 @@ Still need to add the engine support.
       }
     })
 
-    handrit.engine(app {
+    handrit.engine({
       name: "markdown",
       ext: "md",
       handler: function(content){
