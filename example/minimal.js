@@ -2,9 +2,7 @@
  * Module dependencies.
  */
 var express = require('express'),
-    handrit = require('handrit'),
-    markdown = require("node-markdown").Markdown,
-    jade = require('jade');
+    handrit = require('handrit');
 
 var app = express.createServer();
 
@@ -33,15 +31,15 @@ handrit.type(app, {
   }
 })
 
-app.helpers({
-  transform: function(item, context) {
-    if (typeof item.filetype == "undefined" || item.filetype == "markdown") {
-      return markdown(item.content);
-    } else if (item.filetype === "jade") {
-      return jade.compile(item.content, false)(context);
-    }
+handrit.engine.add({
+  name: "html",
+  ext: "html",
+  handler: function(content){
+    return content;
   }
 })
+
+handrit.helpers(app);
 
 if (!module.parent) {
   app.listen(3020);

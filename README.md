@@ -49,10 +49,20 @@ Example of a multi column layout. Columns are case-insensitive
       }
     })
 
-Article/Transformation engines
+Example of adding an html pass through engine
+
+    handrit.engine.add({
+      name: "html",
+      ext: "html",
+      handler: function(content){
+        return content;
+      }
+    })
+
+Default content engines
 
     // Default engines
-    handrit.engine({
+    handrit.engine.add({
       name: "jade",
       ext: "jade",
       handler: function(content){
@@ -60,7 +70,7 @@ Article/Transformation engines
       }
     })
 
-    handrit.engine({
+    handrit.engine.add({
       name: "markdown",
       ext: "md",
       handler: function(content){

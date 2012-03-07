@@ -5,8 +5,7 @@
   "author": "jkennedy <jkennedy@vsso.com>",
   "dependencies": {
     "express": ">= 1.2.0",
-    "jade": ">= 0.20.0",
-    "node-markdown": ">= 0.1.0"
+    "handrit": ">= 0.0.0"
   },
   "engine": "node >= 0.6.2"
 }
