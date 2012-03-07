@@ -2,7 +2,8 @@
  * Module dependencies.
  */
 var express = require('express'),
-    handrit = require('handrit');
+    handrit = require('handrit'),
+    jade = require('jade');
 
 var app = express.createServer();
 
