@@ -19,15 +19,19 @@ app.get('/', function(req, res){
 
 handrit.type(app, {
   src: "notes",
-  render: function(err, items, item, req, res, next){
-    if (err) { next(err) }
+  render: function(err, data){
+    if (err) { data.next(err) }
 
-    res.local("items", items || []);
-    if (item === undefined) {
-      res.render('page', { title: "Notes list"});
+    // Add the list of items to the page context
+    data.res.local("items", data.list || []);
+
+    // Check if this is an item or a listing page
+    if (data.item === undefined) {
+      data.res.render('page', { title: "Notes list"});
     } else {
-      res.local("item", item);
-      res.render('page', { title: res.local("item").title });
+      // Add the item to the page context
+      data.res.local("item", data.item);
+      data.res.render('page', { title: data.res.local("item").title });
     }
   }
 })

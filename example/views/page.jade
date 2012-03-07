@@ -10,7 +10,7 @@ body
     ul
       for note in items
         li
-          a(href='/notes/' + note.name, title=note.title)= note.title
+          a(href='/notes/' + note._name, title=note.title)= note.title
   - else
     p Hi!
 
